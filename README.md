@@ -2,7 +2,7 @@
 
 Editor for DC-DOS
 
-This editor is ripped from Admiral and all modified to use DC-DOS filesystem API.
+This editor is ripped from Admiral and modified to use DC-DOS filesystem API.
 
     CTRL-x  Save and Exit
     CTRL-c  Exit
