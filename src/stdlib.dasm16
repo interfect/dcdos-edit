@@ -24,7 +24,7 @@ set i, ZERO_INIT_START
 :file__open
 ;----------------------------------------------------------------
     set push, file
-    set push, filename
+    set push, [filename]
     set push, 1
     set a, DCDOS_SHELL_OPEN
         int DCDOS_IRQ_MAGIC
@@ -35,11 +35,9 @@ set i, ZERO_INIT_START
 :file__close
 ;----------------------------------------------------------------
     set push, file
-    set push, filename
-    set push, 1
     set a, DCDOS_FILE_FLUSH
         int DCDOS_IRQ_MAGIC
-    add sp, 3
+    add sp, 1
 
     set pc, pop
 
@@ -62,7 +60,7 @@ set i, ZERO_INIT_START
     ife x, y
         set pc, pop
 
-    add c, [x]
+    set c, [x]
     jsr edit__insert_char
 
     add x, 1
