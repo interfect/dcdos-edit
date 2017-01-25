@@ -27,3 +27,5 @@
 :clipboard_ram_start
 #fill 0 EDIT__BUF_SIZE
 :clipboard_ram_end
+
+:ZERO_INIT_END

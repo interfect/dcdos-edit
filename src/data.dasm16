@@ -1,6 +1,19 @@
 ;----------------------------------------------------------------
+; GLOBAL HW VARIABLES
+;----------------------------------------------------------------
+:keyboard               dat 0xffff
+:monitor                dat 0xffff
+:timer                  dat 0xffff
+:floppy                 dat 0xffff
+:hic                    dat 0xffff
+:rci                    dat 0xffff
+:imva                   dat 0xffff
+
+;----------------------------------------------------------------
 ; GLOBAL EDITOR VARIABLES
 ;----------------------------------------------------------------
+
+:ZERO_INIT_START
 
 :edit__buf_start_ptr    dat 0
 :edit__buf_end_ptr      dat 0
@@ -18,17 +31,6 @@
 :edit__scr_y            dat 0
 :edit__scr_dirty        dat 0
 :edit__clipboard_cut    dat FALSE
-
-;----------------------------------------------------------------
-; GLOBAL HW VARIABLES
-;----------------------------------------------------------------
-:keyboard               dat 0xffff
-:monitor                dat 0xffff
-:timer                  dat 0xffff
-:floppy                 dat 0xffff
-:hic                    dat 0xffff
-:rci                    dat 0xffff
-:imva                   dat 0xffff
 
 ;----------------------------------------------------------------
 ; GLOBAL DISPLAY VARIABLES
