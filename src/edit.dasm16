@@ -35,8 +35,7 @@
     set [edit__gap_end_ptr], a
 
 :edit__copy_arg_to_buffer
-    jsr file__open
-    jsr file__read
+    jsr file__load
 
 :edit__main_loop
     jsr edit__view_focus
@@ -82,8 +81,7 @@
     set pc, edit__main_loop
 
 :edit__finish
-    jsr file__write
-    jsr file__close
+    jsr file__save
 
 :edit__cleanup
     set a, 0

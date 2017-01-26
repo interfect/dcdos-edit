@@ -21,16 +21,41 @@ set i, ZERO_INIT_START
     set pc, pop
 
 ;----------------------------------------------------------------
-:file__open
+:file__load
 ;----------------------------------------------------------------
+    ; fopen
+    set push, file
+    set push, [filename]
+    set push, 0
+    set a, DCDOS_SHELL_OPEN
+        int DCDOS_IRQ_MAGIC
+    set x, pop
+    add sp, 2
+
+    ifn x, 0
+        set pc, pop
+
+    jsr file__read
+
+    set pc, file__close
+
+;----------------------------------------------------------------
+:file__save
+;----------------------------------------------------------------
+    ; fopen
     set push, file
     set push, [filename]
     set push, 1
     set a, DCDOS_SHELL_OPEN
         int DCDOS_IRQ_MAGIC
-    add sp, 3
+    set x, pop
+    add sp, 2
 
-    set pc, pop
+    ife x, 0
+        jsr file__write
+
+    set pc, file__close
+
 ;----------------------------------------------------------------
 :file__close
 ;----------------------------------------------------------------
@@ -70,7 +95,7 @@ set i, ZERO_INIT_START
 :file__write
 ;----------------------------------------------------------------
     set push, file
-    set a, DCDOS_FILE_REOPEN
+    set a, DCDOS_FILE_TRUNCATE
         int DCDOS_IRQ_MAGIC
     set y, pop ; error code
 
@@ -95,6 +120,7 @@ set i, ZERO_INIT_START
     sub [sp], clipboard_ram_start
     set a, DCDOS_FILE_WRITE
         int DCDOS_IRQ_MAGIC
+    add sp, 3
 
     set pc, pop
 
