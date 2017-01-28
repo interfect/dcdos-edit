@@ -1,8 +1,6 @@
 ;----------------------------------------------------------------
 :edit_main
 ;----------------------------------------------------------------
-    jsr zero_init
-
     jsr detect_hardware
     ; mandatory hardware
     ife [monitor], 0xffff

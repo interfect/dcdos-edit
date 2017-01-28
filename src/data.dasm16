@@ -12,9 +12,6 @@
 ;----------------------------------------------------------------
 ; GLOBAL EDITOR VARIABLES
 ;----------------------------------------------------------------
-
-:ZERO_INIT_START
-
 :edit__buf_start_ptr    dat 0
 :edit__buf_end_ptr      dat 0
 
@@ -43,3 +40,18 @@
 ;----------------------------------------------------------------
 :filename               dat 0
 :file                   dat 0, 0, 0, 0, 0
+
+;----------------------------------------------------------------
+; BUFFERS
+;----------------------------------------------------------------
+:video_ram_start
+#fill 0 SCREEN_COLS * SCREEN_ROWS
+:video_ram_end
+
+:buffer_ram_start
+#fill 0 EDIT__BUF_SIZE
+:buffer_ram_end
+
+:clipboard_ram_start
+#fill 0 EDIT__BUF_SIZE
+:clipboard_ram_end

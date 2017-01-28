@@ -15,17 +15,3 @@
 ; DATA
 ;----------------------------------------------------------------
 #include "data.dasm16"
-
-:video_ram_start
-#fill 0 SCREEN_COLS * SCREEN_ROWS
-:video_ram_end
-
-:buffer_ram_start
-#fill 0 EDIT__BUF_SIZE
-:buffer_ram_end
-
-:clipboard_ram_start
-#fill 0 EDIT__BUF_SIZE
-:clipboard_ram_end
-
-:ZERO_INIT_END
